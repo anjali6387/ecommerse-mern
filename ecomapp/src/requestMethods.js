@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const BASE_URL = "http://localhost:5000/api/";
-const BASE_URL = "https://ecommerse-mern-backend.onrender.com/";
+const BASE_URL = "https://ecommerse-mern-backend.onrender.com/api/";
 
 
 const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
