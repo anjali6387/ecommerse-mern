@@ -7,7 +7,8 @@ import { FavoriteBorderOutlined, LocalShippingOutlined, ShoppingBagOutlined, Sho
 import { Add, Remove } from "@mui/icons-material";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from "axios"
+// import axios from "axios"
+import { publicRequest } from '../requestMethods';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, addToWishlist } from '../redux/apiCalls';
 import {toast} from 'react-toastify'
@@ -270,7 +271,8 @@ const MainItem = () => {
 
     const getMainItem = async()=>{
       try{
-        const res = await axios.get( "http://localhost:5000/api/products/find/"+id )
+        // const res = await axios.get( "http://localhost:5000/api/products/find/"+id )
+         const res = await publicRequest( "/products/find/"+id )
   
         setMainItem(res.data);
       }catch(err){
