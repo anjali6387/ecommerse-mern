@@ -32,7 +32,11 @@ mongoose.connect(
 
     app.use(express.json());
     app.use(bodyParser.json());
-    app.use(cors())
+    app.use(cors({
+        origin : ["https://ecommerse-mern-zeta.vercel.app/"],
+        methods:["POST","GET","DELETE","PUT","PATCH"],
+        credentials:true,
+    }))
  
 
     app.use("/api/auth", authRoute);
@@ -42,9 +46,10 @@ mongoose.connect(
     app.use("/api/orders", orderRoute);
     app.use("/api/wishlist", wishlistRoute);
 
-    // app.post("/",(req,res)={
+    app.get('/', (req, res) => {
+        res.send('Hello World!');
+      });
 
-    // })
 app.listen(process.env.PORT || 5000,()=>{
     console.log("server is running on port")
 })

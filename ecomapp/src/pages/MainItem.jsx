@@ -272,7 +272,9 @@ const MainItem = () => {
     const getMainItem = async()=>{
       try{
         // const res = await axios.get( "http://localhost:5000/api/products/find/"+id )
-        const res = await publicRequest( "/products/find/"+id )
+
+         const res = await publicRequest( "/products/find/"+id )
+
   
         setMainItem(res.data);
       }catch(err){
