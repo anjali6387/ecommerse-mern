@@ -1,9 +1,8 @@
 import styled from "styled-components"
-import {FavoriteBorderOutlined, StarRate} from '@mui/icons-material';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import {FavoriteBorderOutlined, } from '@mui/icons-material';
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavProduct } from "../redux/reduxWishlist";
-import { ClickAwayListener } from "@mui/material";
+
 import { useState } from "react";
 import { addToWishlist } from "../redux/apiCalls";
 
@@ -189,7 +188,7 @@ navigate("/login")
     {item.rating ? 
     <Rating>
     
-    {item.rating ?  item.rating +`★` + ` | ` : null}
+    {item.rating ?  item.rating +`★ | ` : null}
     {item.review ? item.review : null} 
     </Rating>
     : null}

@@ -29,7 +29,7 @@ try{
     dispatch(loginSuccess(res.data));
     localStorage.setItem("isLogged",true)
     notify('login successFull');
-    window.location.reload();
+    // window.location.reload();
 
 }catch(err){
     dispatch(loginFailure());
@@ -100,7 +100,7 @@ export const findCart = async(dispatch,userId)=>{
     dispatch(findUserCartStart())
     try{
         const res = await userRequest.get("/carts/find/"+userId);
-        // console.log(res.data)
+        console.log(res.data)
         dispatch(findUserCartSuccess(res.data))
         
     }catch(err){
@@ -138,9 +138,10 @@ export const findWishlist = async(dispatch,userId)=>{
   dispatch(findWishlistStart())
   try{
 
+    console.log("userwishlist")
       const res = await userRequest.get("/wishlist/find/"+userId);
-      // console.log(res.data)
-      // console.log("userwishlist")
+      console.log(res.data)
+     
       dispatch(findWishlistSuccess(res.data))
       
   }catch(err){

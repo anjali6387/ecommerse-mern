@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect} from 'react'
 import styled from 'styled-components';
 import Navi from '../componants/Navi';
 import Announce from '../componants/Announce';
 import Footer from '../componants/Footer'
 import WishlistProduct from '../componants/WishlistProduct';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { findWishlist } from '../redux/apiCalls';
+import {  useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+// import { findWishlist } from '../redux/apiCalls';
 
 
 
@@ -30,10 +31,6 @@ const Wrapper = styled.div`
   padding: 20px;
   display:flex;
   flex-direction:column;
-${'' /* justify-content:center; */}
-
-
-${'' /* ${mobile({ padding: "10px" })} */}
 `;
 
 const FavItems = styled.div`
@@ -83,20 +80,19 @@ border:1px  solid rgba(0,0,0,0.2);
 }`
 
 const Wishlist = () => {
-  // const [products , setProducts] = useState([])
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-  const user = useSelector(state=>state.user)
+  // const dispatch = useDispatch()
+  // const user = useSelector(state=>state.user)
   const wishlist = useSelector((state)=>state.wishlist)
 
  
-  useEffect(()=>{
-    // getProducts();
-    if(user.currentUser !== null){
-    findWishlist(dispatch,user.currentUser._id)
-    // console.log(wishlist.favProducts.length)
-    }
-   },[])
+  // useEffect(()=>{
+  //   // getProducts();
+  //   // if(user.currentUser !== null){
+  //   // findWishlist(dispatch,user.currentUser._id)
+  //   // console.log(wishlist.favProducts)
+  //   // }
+  //  },[])
 
   
   return (
@@ -116,7 +112,7 @@ const Wishlist = () => {
   </TopTexts>
   
 <FavItems>
-  {wishlist.favProducts.map((item) => <WishlistProduct item={item} key={item.title} />)}
+  {wishlist.favProducts.map((item) => <WishlistProduct item={item} key={item._id} />)}
 </FavItems>
   
   </Wrapper>
@@ -136,7 +132,7 @@ const Wishlist = () => {
 </EmptyContent>
 
 <EmptyContent>
-  <img src='https://www.pavejewelers.com/assets/images/empty-wishlist.png' style={{height:"200px"}}/>
+  <img src='https://www.pavejewelers.com/assets/images/empty-wishlist.png' alt='sad list' style={{height:"200px"}}/>
 </EmptyContent>
 
 <EmptyContent>

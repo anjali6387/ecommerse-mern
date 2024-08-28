@@ -3,16 +3,16 @@ import Announce from '../componants/Announce';
 import Footer from '../componants/Footer';
 import Newsletter from '../componants/Newsletter';
 import styled from 'styled-components';
-import { FavoriteBorderOutlined, LocalShippingOutlined, ShoppingBagOutlined, ShoppingCartOutlined, StarRate } from '@mui/icons-material';
+import { FavoriteBorderOutlined, LocalShippingOutlined, ShoppingBagOutlined} from '@mui/icons-material';
 import { Add, Remove } from "@mui/icons-material";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 // import axios from "axios"
-import { publicRequest } from '../requestMethods';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, addToWishlist } from '../redux/apiCalls';
 import {toast} from 'react-toastify'
 import {mobile,tabs} from '../Responsive'
+import { publicRequest } from '../requestMethods';
 
 const Container = styled.div`
 
@@ -272,7 +272,9 @@ const MainItem = () => {
     const getMainItem = async()=>{
       try{
         // const res = await axios.get( "http://localhost:5000/api/products/find/"+id )
+
          const res = await publicRequest( "/products/find/"+id )
+
   
         setMainItem(res.data);
       }catch(err){
@@ -306,7 +308,6 @@ const MainItem = () => {
     });
 
   useEffect(()=>{
-    // setClick(false)
     if(!size){(document.getElementById("itemSize").innerHTML = "please select a size");}
      else{
       document.getElementById("itemSize").innerHTML = "";
@@ -377,7 +378,7 @@ const MainItem = () => {
       {mainItem.rating ? 
     <Rating>
     
-    {mainItem.rating ?  mainItem.rating +`★` + ` | ` : null}
+    {mainItem.rating ?  mainItem.rating +`★ | ` : null}
     {mainItem.review ? mainItem.review : null} 
     </Rating>
     : null}

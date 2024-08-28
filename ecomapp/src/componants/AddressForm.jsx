@@ -1,7 +1,7 @@
 
 import styled from "styled-components";
 import { useState } from "react";
-import {orderSuccess} from './Model.js'
+
 
 
 
@@ -14,7 +14,6 @@ const Container = styled.div`
 const Wrapper = styled.div`
   
   padding: 10px;
-  ${'' /* ${mobile({ width: "75%" })} */}
   width:100%;
  
 `;
@@ -49,11 +48,6 @@ const Button = styled.button`
 
 `;
 
-const Remove = styled.div`
-top:0;
-right:0;
-
-`
 
 
 
@@ -61,13 +55,13 @@ right:0;
 const AddressForm = ()=>{
     const [name,setName] = useState("")
     const [number,setNumber] = useState()
-    const [locality,setLocality] = useState("")
+    // const [locality,setLocality] = useState("")
     const [address,setAddress] = useState("")
     const [city,setCity] = useState("")
     const [state,setState] = useState("")
     const [pin,setPin] = useState("")
     const [landmark,setLandmark] = useState("")
-    const [isOpen, setIsOpen] = useState(false)
+    // const [isOpen, setIsOpen] = useState(false)
 
     const onAddressSubmit = (e) => {
         // e.preventDefault();
@@ -76,12 +70,11 @@ const AddressForm = ()=>{
             name,
             number,
             pin,
-            locality,
+            // locality,
             address,
             city,
             state,
             landmark,
-            // addressType,
           },
 
           
