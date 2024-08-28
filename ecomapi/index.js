@@ -32,7 +32,11 @@ mongoose.connect(
 
     app.use(express.json());
     app.use(bodyParser.json());
-    app.use(cors())
+    app.use(cors({
+        origin : ["https://ecommerse-mern-zeta.vercel.app/"],
+        methods:["POST","GET","DELETE","PUT","PATCH"],
+        credentials:true,
+    }))
  
 
     app.use("/api/auth", authRoute);
