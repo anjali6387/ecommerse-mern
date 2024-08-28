@@ -38,8 +38,10 @@ useEffect(()=>{
     try{
       // const res = await axios.get(cat ? `http://localhost:5000/api/products?category=${cat}` 
       //                                 : "http://localhost:5000/api/products" )
-       const res = await publicRequest.get(cat ? `http://localhost:5000/api/products?category=${cat}`
-                                         : "http://localhost:5000/api/products" )
+       // const res = await publicRequest.get(cat ? `http://localhost:5000/api/products?category=${cat}`
+       //                                   : "http://localhost:5000/api/products" )
+      const res = await publicRequest.get(cat ? `/products?category=${cat}`
+  : "/products" )
       
       setProducts(res.data);
     }catch(err){
