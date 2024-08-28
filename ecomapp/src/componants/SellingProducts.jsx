@@ -2,7 +2,8 @@ import styled from "styled-components"
 import SellingProduct from "./SellingProduct"
 import {mobile, tabs} from '../Responsive'
 import { useEffect, useState } from "react"
-import axios from "axios"
+// import axios from "axios"
+import { publicRequest } from "../requestMethods"
 
 const Container = styled.div`
 padding:20px;
@@ -35,8 +36,19 @@ const [filteredProducts,setFilteredProducts] = useState([])
 useEffect(()=>{
   const getProducts = async()=>{
     try{
-      const res = await axios.get(cat ? `http://localhost:5000/api/products?category=${cat}` 
-                                      : "http://localhost:5000/api/products" )
+      // const res = await axios.get(cat ? `http://localhost:5000/api/products?category=${cat}` 
+      //                                 : "http://localhost:5000/api/products" )
+      // const res = await axios.get(cat ? `https://ecommerse-mern-backend.onrender.com/api/products?category=${cat}` 
+      //   : "https://ecommerse-mern-backend.onrender.com/api/products" )
+
+//  const res = await publicRequest.get(cat ? `http://localhost:5000/api/products?category=${cat}`
+//                                          : "http://localhost:5000/api/products" )
+
+// const res = await publicRequest.get(cat ? `/products?category=${cat}`
+//   : "http://localhost:5000/api/products" )
+
+const res = await publicRequest.get(cat ? `/products?category=${cat}`
+  : "/products" )
       
       setProducts(res.data);
     }catch(err){

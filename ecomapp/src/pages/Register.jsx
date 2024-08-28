@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { registerUser } from "../redux/apiCalls";
 import { useNavigate } from "react-router-dom";
-// import { mobile } from "../responsive";
+import { mobile } from "../Responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -16,7 +17,7 @@ const Container = styled.div`
       center;
   background-size: cover;
   display: flex;
-  align-items: center;  /*vertically center */
+  align-items: center; 
   justify-content: center;
 `;
 
@@ -24,7 +25,7 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
-  ${'' /* ${mobile({ width: "75%" })} */}
+  ${mobile({ width: "75%" })}
 `;
 
 const Title = styled.h1`
@@ -58,6 +59,14 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
 `;
+const Span = styled.p`
+  margin: 5px 0px;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+  text-decoration:none;
+  text-transform:uppercase;
+`;
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -86,10 +95,15 @@ const Register = () => {
           <Input placeholder="email" type="email" onChange={(e)=>setEmail(e.target.value)} required />
           <Input placeholder="password"  type="password" onChange={(e)=>setPassword(e.target.value)} required/>
           {/* <Input placeholder="confirm password" /> */}
+
+          <Span>already have an account ? <Link to="/login">Login</Link></Span>
+
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
+
+        
           <Button onClick={handleRegister}>CREATE</Button>
         </Form>
       </Wrapper>

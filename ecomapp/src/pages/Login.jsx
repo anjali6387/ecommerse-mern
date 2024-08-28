@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { findCart, loginUser } from "../redux/apiCalls";
-import { loginSuccess } from "../redux/reduxUser";
-// import {mobile} from "../responsive";
+import { loginUser } from "../redux/apiCalls";
+import { Link } from "react-router-dom";
+
+import {mobile} from "../Responsive";
 
 const Container = styled.div`
   width: 100vw;
@@ -25,8 +26,7 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
-  ${'' /* ${mobile({ width: "75%" })} */}
-  ${'' /* width:100%; */}
+  ${mobile({ width: "75%" })}
  
 `;
 
@@ -43,8 +43,6 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  ${'' /* flex: 1; */}
-  ${'' /* min-width: 2%; */}
   margin: 10px 0;
   padding: 10px;
 `;
@@ -58,42 +56,43 @@ const Button = styled.button`
   cursor: pointer;
   margin-bottom: 10px;
 
-  ${'' /* &:disabled{
+  &:disabled{
     color:green;
     background-color:white;
     cursor: not-allowed;
-  } */}
-
+  }
 `;
 
 const Error = styled.div`
 color:red;
-
 `
 
-const Link = styled.a`
+const Span = styled.p`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+  text-decoration:none;
+  text-transform:uppercase;
 `;
+
+const Br = styled.br`
+`
 
 const Login = () => {
   
   const [username, setUsername] = useState("")
   const [password,setPassword] = useState("")
-
-
   const {isFetching,isError} = useSelector((state)=>state.user)
-
-
+   
   const dispatch = useDispatch()
+
 
   const handleLogin = (e)=>{
     e.preventDefault();
     loginUser(dispatch,{username,password})
 
-    console.log("hellow")
+    // console.log("hellow")
   }
 
  
@@ -107,15 +106,16 @@ const Login = () => {
           <Input placeholder="username" type="text" onChange={(e)=>setUsername(e.target.value)} />
           <Input placeholder="password" type="password" onChange={(e)=>setPassword(e.target.value)} />
           <Button 
-          // key={key} 
+          // key={key}
+          disabled={isFetching} 
           onClick={handleLogin} >LOGIN</Button>
           {isError?
           <Error>something went Wrong...</Error>:null}
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+         <Span>Don't have an account ? <Br/><Link to="/register">create an account</Link></Span>
         </Form>
       </Wrapper>
     </Container>
+    
   );
 };
 
